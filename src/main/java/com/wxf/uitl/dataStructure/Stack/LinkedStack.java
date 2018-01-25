@@ -1,4 +1,6 @@
-package com.wxf.uitl.dataStructure;
+package com.wxf.uitl.dataStructure.Stack;
+
+import com.wxf.uitl.dataStructure.Tree.Tree.Node;
 
 import java.io.Serializable;
 

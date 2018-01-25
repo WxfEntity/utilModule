@@ -1,4 +1,4 @@
-package com.wxf.uitl.dataStructure;
+package com.wxf.uitl.dataStructure.LinkedList;
 
 import java.io.Serializable;
 import java.util.ConcurrentModificationException;
@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  * Created by wxf on 2018/1/18.
  * 优化的链表集合
  */
-public class MyLinkedList<T> implements Serializable,IList<T>, Iterable<T> {
+public class MyLinkedList<T> implements Serializable,ILinkedList.IList<T>, Iterable<T> {
 
     private static final long serialVersionUID = 8683452581122892300L;
 

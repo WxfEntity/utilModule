@@ -1,4 +1,4 @@
-package com.wxf.uitl.dataStructure;
+package com.wxf.uitl.dataStructure.Tree;
 
 /**
  * Created by TYZ027 on 2018/1/18.

@@ -1,4 +1,4 @@
-package com.wxf.uitl.dataStructure;
+package com.wxf.uitl.dataStructure.LinkedList;
 
 /**
  * Created by wxf on 2018/1/18.

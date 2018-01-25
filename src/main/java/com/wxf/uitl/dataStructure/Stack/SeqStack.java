@@ -1,4 +1,4 @@
-package com.wxf.uitl.dataStructure;
+package com.wxf.uitl.dataStructure.Stack;
 
 import java.io.Serializable;
 import java.util.EmptyStackException;

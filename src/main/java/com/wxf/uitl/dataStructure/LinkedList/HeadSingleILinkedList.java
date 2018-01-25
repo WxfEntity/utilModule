@@ -1,4 +1,6 @@
-package com.wxf.uitl.dataStructure;
+package com.wxf.uitl.dataStructure.LinkedList;
+
+import com.wxf.uitl.dataStructure.Tree.Tree.Node;
 
 /**
  * Created by TYZ027 on 2018/1/18.
