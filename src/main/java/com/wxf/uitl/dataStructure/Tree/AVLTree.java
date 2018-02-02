@@ -6,7 +6,7 @@ package com.wxf.uitl.dataStructure.Tree;
 public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
 
     /** The tree root. */
-    public Tree.AVLNode<T> root;
+    public AVLNode<T> root;
 
 
     @Override
@@ -21,7 +21,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
     }
 
 
-    public int size(Tree.AVLNode<T> subtree){
+    public int size(AVLNode<T> subtree){
         if(subtree==null){
             return 0;
         }else {
@@ -41,7 +41,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * @param p
      * @return
      */
-    public int height(Tree.AVLNode<T> p){
+    public int height(AVLNode<T> p){
         return p == null ? -1 : p.height;
     }
 
@@ -61,7 +61,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * @param subtree
      * @return
      */
-    public String preOrder(Tree.AVLNode<T> subtree){
+    public String preOrder(AVLNode<T> subtree){
         StringBuilder sb =new StringBuilder();
         if (subtree!=null) {
             //先访问根结点
@@ -89,7 +89,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * @param subtree
      * @return
      */
-    private String inOrder(Tree.AVLNode<T> subtree){
+    private String inOrder(AVLNode<T> subtree){
         StringBuilder sb =new StringBuilder();
         if (subtree!=null) {
             //访问左子树
@@ -117,7 +117,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * @param subtree
      * @return
      */
-    private String postOrder(Tree.AVLNode<T> subtree){
+    private String postOrder(AVLNode<T> subtree){
         StringBuilder sb =new StringBuilder();
         if (subtree!=null){
             //访问左子树
@@ -152,11 +152,11 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
         this.root=insert(data,root);
     }
 
-    private Tree.AVLNode<T> insert(T data , Tree.AVLNode<T> p){
+    private AVLNode<T> insert(T data , AVLNode<T> p){
 
         //说明已没有孩子结点,可以创建新结点插入了.
         if(p==null){
-            p=new Tree.AVLNode<T>(data);
+            p=new AVLNode<T>(data);
         }
 
         int result=data.compareTo(p.data);
@@ -214,7 +214,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * @param p
      * @return
      */
-    private Tree.AVLNode<T> remove(T data, Tree.AVLNode<T> p){
+    private AVLNode<T> remove(T data, AVLNode<T> p){
 
         if(p ==null)
             return null;
@@ -227,7 +227,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
 
             //检测是否平衡
             if(height(p.right)-height(p.left)==2){
-                Tree.AVLNode<T> currentNode=p.right;
+                AVLNode<T> currentNode=p.right;
                 //判断需要那种旋转
                 if(height(currentNode.left)>height(currentNode.right)){
                     //LL
@@ -244,7 +244,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
             p.right=remove(data,p.right);
             //检测是否平衡
             if(height(p.left)-height(p.right)==2){
-                Tree.AVLNode<T> currentNode=p.left;
+                AVLNode<T> currentNode=p.left;
                 //判断需要那种旋转
                 if(height(currentNode.right)>height(currentNode.left)){
                     //RR
@@ -281,7 +281,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * @param p
      * @return
      */
-    private Tree.AVLNode<T> findMin(Tree.AVLNode<T> p){
+    private AVLNode<T> findMin(AVLNode<T> p){
         if (p==null)//结束条件
             return null;
         else if (p.left==null)//如果没有左结点,那么t就是最小的
@@ -304,7 +304,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * @param p
      * @return
      */
-    private Tree.AVLNode<T> findMax(Tree.AVLNode<T> p){
+    private AVLNode<T> findMax(AVLNode<T> p){
         if (p==null)
             return null;
         else if (p.right==null)//如果没有右结点,那么t就是最大的
@@ -313,7 +313,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
     }
 
     @Override
-    public Tree.BinaryNode findNode(T data) {
+    public BinaryNode findNode(T data) {
         /**
          * @see BinarySearchTree#findNode(Comparable)
          * @return
@@ -326,7 +326,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
         return data != null && contain(data, root);
     }
 
-    public boolean contain(T data , Tree.AVLNode<T> subtree){
+    public boolean contain(T data , AVLNode<T> subtree){
 
         if (subtree==null)
             return false;
@@ -352,9 +352,9 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * @param x
      * @return
      */
-    private Tree.AVLNode<T> singleRotateLeft(Tree.AVLNode<T> x){
+    private AVLNode<T> singleRotateLeft(AVLNode<T> x){
         //把w结点旋转为根结点
-        Tree.AVLNode<T> w=  x.left;
+        AVLNode<T> w=  x.left;
         //同时w的右子树变为x的左子树
         x.left=w.right;
         //x变为w的右子树
@@ -369,9 +369,9 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * 右右单旋转(RR旋转) x变为w的根结点, w变为x的左子树
      * @return
      */
-    private Tree.AVLNode<T> singleRotateRight(Tree.AVLNode<T> w){
+    private AVLNode<T> singleRotateRight(AVLNode<T> w){
 
-        Tree.AVLNode<T> x=w.right;
+        AVLNode<T> x=w.right;
 
         w.right=x.left;
         x.left=w;
@@ -388,7 +388,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * 左右旋转(LR旋转) x(根) w y 结点 把y变成根结点
      * @return
      */
-    private Tree.AVLNode<T> doubleRotateWithLeft(Tree.AVLNode<T> x){
+    private AVLNode<T> doubleRotateWithLeft(AVLNode<T> x){
         //w先进行RR旋转
         x.left=singleRotateRight(x.left);
         //再进行x的LL旋转
@@ -400,7 +400,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
      * @param w
      * @return
      */
-    private Tree.AVLNode<T> doubleRotateWithRight(Tree.AVLNode<T> w){
+    private AVLNode<T> doubleRotateWithRight(AVLNode<T> w){
         //先进行LL旋转
         w.right=singleRotateLeft(w.right);
         //再进行RR旋转
@@ -408,7 +408,7 @@ public class AVLTree<T extends Comparable> extends BinarySearchTree<T> {
     }
 
 
-    private void printTree( Tree.AVLNode<T> t )
+    private void printTree( AVLNode<T> t )
     {
         if( t != null )
         {

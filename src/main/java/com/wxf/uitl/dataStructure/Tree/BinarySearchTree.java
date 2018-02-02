@@ -12,7 +12,7 @@ import java.util.Queue;
  *
  */
 public class BinarySearchTree<T extends Comparable> implements Tree<T> {
-    protected Tree.BinaryNode<T> root;
+    protected BinaryNode<T> root;
 
     public BinarySearchTree(){
         root =null;
@@ -48,9 +48,9 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param inEnd
      * return root 最终返回的根结点
      */
-    public Tree.BinaryNode<T> createBinarySearchTreeByPreIn(T[] preList , T[] inList, int preStart , int preEnd , int inStart , int inEnd){
+    public BinaryNode<T> createBinarySearchTreeByPreIn(T[] preList , T[] inList, int preStart , int preEnd , int inStart , int inEnd){
         //preList[preStart]必须根结点数据,创建根结点root
-        Tree.BinaryNode<T> p=new Tree.BinaryNode<>(preList[preStart]);
+        BinaryNode<T> p=new BinaryNode<>(preList[preStart]);
         //如果没有其他元素,就说明结点已构建完成
         if (preStart == preEnd && inStart == inEnd) {
             return p;
@@ -98,10 +98,10 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param inEnd
      * @return 根结点
      */
-    public Tree.BinaryNode<T> createBinarySearchTreeByPostIn(T[] postList, T[] inList, int postStart, int postEnd, int inStart, int inEnd){
+    public BinaryNode<T> createBinarySearchTreeByPostIn(T[] postList, T[] inList, int postStart, int postEnd, int inStart, int inEnd){
 
         //构建根结点
-        Tree.BinaryNode<T> p=new Tree.BinaryNode<>(postList[postEnd]);
+        BinaryNode<T> p=new BinaryNode<>(postList[postEnd]);
 
         if(postStart==postEnd && inStart==inEnd){
             return p;
@@ -157,7 +157,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param subtree
      * @return
      */
-    private int size(Tree.BinaryNode<T> subtree){
+    private int size(BinaryNode<T> subtree){
         if (subtree == null)
             return 0;
         else
@@ -181,7 +181,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param subtree
      * @return
      */
-    private int height(Tree.BinaryNode<T> subtree){
+    private int height(BinaryNode<T> subtree){
         if (subtree==null){
             return 0;
         }else {
@@ -206,7 +206,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param subtree
      * @return
      */
-    private String preOrder(Tree.BinaryNode<T> subtree){
+    private String preOrder(BinaryNode<T> subtree){
         StringBuilder sb=new StringBuilder();
         if (subtree!=null) {//递归结束条件
             sb.append(subtree.data).append(",");
@@ -233,7 +233,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * 中根遍历
      * @return
      */
-    public String inOrder(Tree.BinaryNode<T> subtree) {
+    public String inOrder(BinaryNode<T> subtree) {
         StringBuilder sb=new StringBuilder();
         if (subtree!=null) {//递归结束条件
             //先遍历左子树
@@ -262,7 +262,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param subtree
      * @return
      */
-    public String postOrder(Tree.BinaryNode<T> subtree) {
+    public String postOrder(BinaryNode<T> subtree) {
         StringBuilder sb=new StringBuilder();
         if (subtree!=null) {//递归结束条件
             //先遍历左子树
@@ -284,9 +284,9 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     public String preOrderTraverse(){
         StringBuffer sb=new StringBuffer();
         //构建用于存放结点的栈
-        LinkedStack<Tree.BinaryNode<T>> stack=new LinkedStack<>();
+        LinkedStack<BinaryNode<T>> stack=new LinkedStack<>();
 
-        Tree.BinaryNode<T> p=this.root;
+        BinaryNode<T> p=this.root;
 
         while (p!=null||!stack.isEmpty()){
 
@@ -321,9 +321,9 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     public String inOrderTraverse(){
         StringBuffer sb=new StringBuffer();
         //构建用于存放结点的栈
-        LinkedStack<Tree.BinaryNode<T>> stack=new LinkedStack<>();
+        LinkedStack<BinaryNode<T>> stack=new LinkedStack<>();
 
-        Tree.BinaryNode<T> p=this.root;
+        BinaryNode<T> p=this.root;
 
         while (p!=null||!stack.isEmpty()){
             while (p!=null){//把左孩子都入栈,至到左孩子为null
@@ -354,10 +354,10 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     public String postOrderTraverse(){
         StringBuffer sb=new StringBuffer();
         //构建用于存放结点的栈
-        LinkedStack<Tree.BinaryNode<T>> stack=new LinkedStack<>();
+        LinkedStack<BinaryNode<T>> stack=new LinkedStack<>();
 
-        Tree.BinaryNode<T> currentNode =this.root;
-        Tree.BinaryNode<T> prev=this.root;
+        BinaryNode<T> currentNode =this.root;
+        BinaryNode<T> prev=this.root;
 
         while (currentNode!=null||!stack.isEmpty()){
             //把左子树加入栈中,直到叶子结点为止
@@ -369,7 +369,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
             //开始访问当前结点的父结点右孩子
             if(!stack.isEmpty()){
                 //获取右孩子
-                Tree.BinaryNode<T> temp=stack.peek().right;
+                BinaryNode<T> temp=stack.peek().right;
                 //先判断是否有右孩子或者右孩子是否已被访问过
                 if(temp==null||temp==prev){//没有右孩子||右孩子已被访问过
                     //如果没有右孩子或者右孩子已被访问,则弹出父结点并访问
@@ -406,9 +406,9 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
         /**
          * 存放需要遍历的结点,左结点一定优先右节点遍历
          */
-        LinkedQueue<Tree.BinaryNode<T>> queue=new LinkedQueue<>();
+        LinkedQueue<BinaryNode<T>> queue=new LinkedQueue<>();
         StringBuffer sb=new StringBuffer();
-        Tree.BinaryNode<T> p=this.root;
+        BinaryNode<T> p=this.root;
 
         while (p!=null){
             //记录经过的结点
@@ -457,7 +457,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     }
 
     @Override
-    public Tree.BinaryNode<T> findNode(T data) {
+    public BinaryNode<T> findNode(T data) {
         return findNode(data,root);
     }
 
@@ -485,9 +485,9 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param p
      * @return
      */
-    private Tree.BinaryNode<T> insert(T data, Tree.BinaryNode<T> p){
+    private BinaryNode<T> insert(T data, BinaryNode<T> p){
         if(p==null){
-            p=new Tree.BinaryNode<>(data,null,null);
+            p=new BinaryNode<>(data,null,null);
         }
         int compareResult=data.compareTo(p.data);
 
@@ -512,7 +512,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param p
      * @return
      */
-    private Tree.BinaryNode<T> remove(T data, Tree.BinaryNode<T> p){
+    private BinaryNode<T> remove(T data, BinaryNode<T> p){
         //没有找到要删除的元素,递归结束
         if (p==null){
             return p;
@@ -545,9 +545,9 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
             throw new RuntimeException("data can\'Comparable be null !");
         }
         //从根结点开始查找
-        Tree.BinaryNode<T> current =this.root;
+        BinaryNode<T> current =this.root;
         //记录父结点
-        Tree.BinaryNode<T> parent=this.root;
+        BinaryNode<T> parent=this.root;
         //判断左右孩子的flag
         boolean isLeft=true;
 
@@ -606,7 +606,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
         //删除带有两个孩子结点的结点
         else {
             //找到当前要删除结点current的右子树中的最小值元素
-            Tree.BinaryNode<T> successor= findSuccessor(current);
+            BinaryNode<T> successor= findSuccessor(current);
 
             if(current == root) {
                 this.root = successor;
@@ -626,10 +626,10 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param delNode 要删除的结点
      * @return
      */
-    public Tree.BinaryNode<T> findSuccessor(Tree.BinaryNode<T> delNode) {
-        Tree.BinaryNode<T> successor = delNode;
-        Tree.BinaryNode<T> successorParent = delNode;
-        Tree.BinaryNode<T> current = delNode.right;
+    public BinaryNode<T> findSuccessor(BinaryNode<T> delNode) {
+        BinaryNode<T> successor = delNode;
+        BinaryNode<T> successorParent = delNode;
+        BinaryNode<T> current = delNode.right;
 
         //不断查找左结点,直到为空,则successor为最小值结点
         while(current != null) {
@@ -652,7 +652,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param p
      * @return
      */
-    private Tree.BinaryNode<T> findMin(Tree.BinaryNode<T> p){
+    private BinaryNode<T> findMin(BinaryNode<T> p){
 
         if (p==null)//结束条件
             return null;
@@ -666,7 +666,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param p
      * @return
      */
-    private Tree.BinaryNode<T> findMax(Tree.BinaryNode<T> p){
+    private BinaryNode<T> findMax(BinaryNode<T> p){
         if (p==null)//结束条件
             return null;
         else if (p.right==null)
@@ -681,7 +681,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * @param p
      * @return
      */
-    private Tree.BinaryNode<T> findNode(T data, Tree.BinaryNode<T> p){
+    private BinaryNode<T> findNode(T data, BinaryNode<T> p){
 
         if (p==null||data==null){
             return null;
@@ -699,7 +699,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     }
 
 
-    private boolean contains(T data,Tree.BinaryNode<T> p) {
+    private boolean contains(T data,BinaryNode<T> p) {
 
         if (p==null||data==null){
             return false;
@@ -723,7 +723,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     }
 
 
-    private void printTree( Tree.BinaryNode t )
+    private void printTree( BinaryNode t )
     {
         if( t != null )
         {
@@ -739,10 +739,10 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * 将树转换成字符串并打印在控制台上，用L表示左孩子，R表示右孩子
      */
     public void print() {
-        LinkedList<Tree.BinaryNode<T>> tree = getCompleteBinaryTree();
+        LinkedList<BinaryNode<T>> tree = getCompleteBinaryTree();
         //获取树的深度
         int depth = height();
-        Iterator<Tree.BinaryNode<T>> iterator = tree.iterator();
+        Iterator<BinaryNode<T>> iterator = tree.iterator();
 
         int maxPosition = 1;
 
@@ -756,7 +756,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
             //开始打印元素
             for (int position = 0; position < maxPosition; position++) {
                 if (iterator.hasNext()) {
-                    Tree.BinaryNode<T> node = iterator.next();
+                    BinaryNode<T> node = iterator.next();
                     if (node != null) {
                         System.out.print(node.data);
                     } else {
@@ -785,19 +785,19 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     /*
      * 将二叉树用空节点补充成完全二叉树，并以水平遍历形式返回
      */
-    private LinkedList<Tree.BinaryNode<T>> getCompleteBinaryTree() {
-        Queue<Tree.BinaryNode<T>> queue = new LinkedList<>();
-        LinkedList<Tree.BinaryNode<T>> tree = new LinkedList<>(); // 把树补充成完全二叉树，放在这个链表中
+    private LinkedList<BinaryNode<T>> getCompleteBinaryTree() {
+        Queue<BinaryNode<T>> queue = new LinkedList<>();
+        LinkedList<BinaryNode<T>> tree = new LinkedList<>(); // 把树补充成完全二叉树，放在这个链表中
         queue.add(root);
-        Tree.BinaryNode<T> empty = null;
+        BinaryNode<T> empty = null;
         int nodeCount = 1; // 队列中非空节点数
         while (queue.size() > 0 && nodeCount > 0) {
-            Tree.BinaryNode<T> node = queue.remove();
+            BinaryNode<T> node = queue.remove();
             if (node != null) {
                 nodeCount--;
                 tree.add(node);
-                Tree.BinaryNode<T> left = node.left;
-                Tree.BinaryNode<T> right = node.right;
+                BinaryNode<T> left = node.left;
+                BinaryNode<T> right = node.right;
                 if (left == null) {
                     queue.add(empty);
                 } else {

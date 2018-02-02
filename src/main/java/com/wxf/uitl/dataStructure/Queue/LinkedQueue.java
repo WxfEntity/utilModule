@@ -1,6 +1,6 @@
 package com.wxf.uitl.dataStructure.Queue;
 
-import com.wxf.uitl.dataStructure.Tree.Tree.Node;
+import com.wxf.uitl.dataStructure.Tree.Node;
 
 import java.io.Serializable;
 import java.util.NoSuchElementException;
