@@ -6,6 +6,12 @@ package com.wxf.uitl;
 public class User {
     private String name;
     private int age;
+
+    public User() {
+        this.age=20;
+        this.name="上海";
+    }
+
     public User(String name, int age) {
         this.name=name;
         this.age=age;

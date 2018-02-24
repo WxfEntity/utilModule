@@ -59,9 +59,8 @@ public class FileClassLoader extends ClassLoader{
 
         try {
             //加载指定的class文件
-            Class<?> object1=loader.loadClass("com.wxf.od.User");
+            Class<?> object1=loader.loadClass("com.wxf.uitl.User");
             System.out.println(object1.newInstance().toString());
-
             //输出结果:I am DemoObj
         } catch (Exception e) {
             e.printStackTrace();
